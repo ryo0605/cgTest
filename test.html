@@ -13,7 +13,7 @@
 
       function init() {
         // サイズを指定
-        const width = 800
+        const width = 800;
         const height = 600;
 
         // レンダラーを作成
@@ -30,7 +30,8 @@
         // カメラを作成
         const camera = new THREE.PerspectiveCamera(45, width / height);
         // カメラの初期座標を設定
-        camera.position.set(0, 5, 40);
+        camera.position.set(0, 2, 10);
+        camera.lookAt(0,0,0);
 
         // カメラコントローラーを作成
         const controls = new THREE.OrbitControls(camera, document.body); 
@@ -77,33 +78,58 @@
         plane3.scale.set(1,0.5);
         scene.add(plane3);
 
+
+        var i = 1;
+        var n = 3;
+
         // 箱を作成
         var geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
         var material = new THREE.MeshPhongMaterial({ color: 0x0000ff });
         var box = new THREE.Mesh(geometry, material);
-        box.position.set(0,0,0); //位置を指定
+        box.position.set(0, 0, 0); //位置を指定
         scene.add(box);   // シーンに追加
 
+        //襖1
         var box2 = new THREE.Mesh(geometry, material);
-        box2.position.set(9,6,-12.5); //位置を指定
-        box2.scale.set(14,25)
+        box2.position.set(9, 6, -12.5*i); //位置を指定
+        box2.scale.set(14, 25)
         scene.add(box2);   // シーンに追加
 
         var box3 = new THREE.Mesh(geometry, material);
-        box3.position.set(-9,6,-12.5); //位置を指定
-        box3.scale.set(14,25)
+        box3.position.set(-9, 6, -12.5*i); //位置を指定
+        box3.scale.set(14, 25)
         scene.add(box3);   // シーンに追加
 
         var box4 = new THREE.Mesh(geometry, material);
-        box4.position.set(-3.5,6,-12); //位置を指定
-        box4.scale.set(14,25)
+        box4.position.set(-3.5, 6, -12*i); //位置を指定
+        box4.scale.set(14, 25)
         scene.add(box4);   // シーンに追加
 
         var box5 = new THREE.Mesh(geometry, material);
-        box5.position.set(3.5,6,-12); //位置を指定
-        box5.scale.set(14,25)
+        box5.position.set(3.5, 6, -12*i); //位置を指定
+        box5.scale.set(14, 25)
         scene.add(box5);   // シーンに追加
 
+        //襖２
+        var box6 = new THREE.Mesh(geometry, material);
+        box6.position.set(9, 6, 12.5); //位置を指定
+        box6.scale.set(14, 25)
+        scene.add(box6);   // シーンに追加
+
+        var box7 = new THREE.Mesh(geometry, material);
+        box7.position.set(-9, 6, 12.5); //位置を指定
+        box7.scale.set(14, 25)
+        scene.add(box7);   // シーンに追加
+
+        var box8 = new THREE.Mesh(geometry, material);
+        box8.position.set(-3.5, 6, 12); //位置を指定
+        box8.scale.set(14, 25)
+        scene.add(box8);   // シーンに追加
+
+        var box9 = new THREE.Mesh(geometry, material);
+        box9.position.set(3.5, 6, 12); //位置を指定
+        box9.scale.set(14, 25)
+        scene.add(box9);   // シーンに追加
 
 
         update();
@@ -113,21 +139,36 @@
           // レンダリング
           renderer.render(scene, camera);
           requestAnimationFrame(update);
-          box.position.z -=0.03;
+          box.position.z -= 0.02;
+          camera.position.z -=0.02;
+          camera.lookAt(box.position);
+          if(box.position.z <= box4.position.z + 10 && box.position.z >= box4.position.z + 9.99){
+            box6.position.z -= 48;
+            box7.position.z -= 48;
+            box8.position.z -= 48;
+            box9.position.z -= 48;
+          }
+          if(box.position.z <= box8.position.z +10 && box.position.z >= box8.position.z + 9.98){
+            box2.position.z -= 48;
+            box3.position.z -= 48;
+            box4.position.z -= 48;
+            box5.position.z -= 48;
+          }
 
-           // 箱を回転させる
-            if(box.position.z <= box4.position.z +10 && box.position.z >= box4.position.z && box4.position.x >= -9){
-                box4.position.x -=0.02;
-            }else if(box4.position.x <= -3.5){
-                 box4.position.x +=0.02;
-            }
+          // 襖を動かす
+          if(box.position.z <= box4.position.z +10 && box.position.z >= box4.position.z && box4.position.x >= -9){
+            box4.position.x -=0.02;
+          }else if(box4.position.x <= -3.5){
+            box4.position.x +=0.01;
+          }
 
-            if(box.position.z <= box5.position.z +10 && box.position.z >= box5.position.z && box5.position.x <= 9){
-                box5.position.x +=0.02;
-            }else if(box5.position.x >= +3.5){
-                 box5.position.x -=0.02;
-            }
-        }
+          if(box.position.z <= box5.position.z +10 && box.position.z >= box5.position.z && box5.position.x <= 9){
+            box5.position.x +=0.02;
+          }else if(box5.position.x >= +3.5){
+            box5.position.x -=0.01;
+          }
+
       }
+    }
     </script>
 </body>
