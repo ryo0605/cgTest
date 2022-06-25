@@ -1,0 +1,189 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/three@0.137.4/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.137.4/examples/js/controls/OrbitControls.js"></script>
+  </head>
+<body>
+ <h1>背景色を付けた</h1>
+ 背景色をつけてみた
+ <script>
+      // ページの読み込みを待つ
+      window.addEventListener('DOMContentLoaded', init);
+
+      function init() {
+        // サイズを指定
+        const width = 800;
+        const height = 600;
+
+        // レンダラーを作成
+        var renderer = new THREE.WebGLRenderer();
+        document.body.appendChild(renderer.domElement);
+        renderer.setSize(width, height);
+        // 背景の色を設定
+        renderer.setClearColor(0xffffdd);
+
+
+        // シーンを作成
+        const scene = new THREE.Scene();
+
+        // カメラを作成
+        const camera = new THREE.PerspectiveCamera(45, width / height);
+        // カメラの初期座標を設定
+        camera.position.set(0, 2, 10);
+        camera.lookAt(0,0,0);
+
+        // カメラコントローラーを作成
+        const controls = new THREE.OrbitControls(camera, document.body); 
+        
+        // 平行光源1
+        var directionalLight1 = new THREE.DirectionalLight(0xffffff);
+        directionalLight1.position.set(10, 10, 10);
+        // シーンに追加
+        scene.add(directionalLight1);
+        // 平行光源2
+        var directionalLight2 = new THREE.DirectionalLight(0x888888);
+        directionalLight2.position.set(-10, -10, 10);
+        // シーンに追加
+        scene.add(directionalLight2);
+
+        // helper
+        const gridHelper = new THREE.GridHelper(5,10); // size, step
+        scene.add(gridHelper);
+        const axisHelper = new THREE.AxisHelper(2); //軸の長さ　X：赤、Y：緑、z：青
+        scene.add(axisHelper);
+
+        //floor
+        var geometryF = new THREE.PlaneGeometry(25,25,25,25);
+        var materialF = new THREE.MeshBasicMaterial({ color: 0xffffff });
+        var floor = new THREE.Mesh(geometryF, materialF);
+        floor.rotation.set( -Math.PI/2, 0, 0 );
+        floor.position.set(0,0,0);
+        scene.add(floor);
+
+        var plane1 = new THREE.Mesh(geometryF, materialF);
+        plane1.rotation.set( Math.PI/2, 0, 0 );
+        plane1.position.set(0,12,0);
+        scene.add(plane1);
+
+        var plane2 = new THREE.Mesh(geometryF, materialF);
+        plane2.rotation.set(0, Math.PI/2, 0 );
+        plane2.position.set(-12.5,6,0);
+        plane2.scale.set(1,0.5);
+        scene.add(plane2);
+
+        var plane3 = new THREE.Mesh(geometryF, materialF);
+        plane3.rotation.set(0, -Math.PI/2, 0 );
+        plane3.position.set(12.5,6,0);
+        plane3.scale.set(1,0.5);
+        scene.add(plane3);
+
+        var plane4 = new THREE.Mesh(geometryF, materialF);
+        plane4.rotation.set( -Math.PI/2, 0, 0 );
+        plane4.position.set(0,0,-24);
+        scene.add(plane4);
+        
+        var plane5 = new THREE.Mesh(geometryF, materialF);
+        plane5.rotation.set( Math.PI/2, 0, 0 );
+        plane5.position.set(0,12,-24);
+        scene.add(plane5);
+
+        var plane6 = new THREE.Mesh(geometryF, materialF);
+        plane6.rotation.set(0, Math.PI/2, 0 );
+        plane6.position.set(-12.5,6,-24);
+        plane6.scale.set(1,0.5);
+        scene.add(plane6);
+
+        var plane7 = new THREE.Mesh(geometryF, materialF);
+        plane7.rotation.set(0, -Math.PI/2, 0 );
+        plane7.position.set(12.5,6,-24);
+        plane7.scale.set(1,0.5);
+        scene.add(plane7);
+
+
+        var i = 1;
+        var n = 3;
+
+        // 箱を作成
+        var geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+        var material = new THREE.MeshPhongMaterial({ color: 0x0000ff });
+        var box = new THREE.Mesh(geometry, material);
+        box.position.set(0, 0, 0); //位置を指定
+        scene.add(box);   // シーンに追加
+
+        //襖1
+        var box2 = new THREE.Mesh(geometry, material);
+        box2.position.set(9, 6, -12.5*i); //位置を指定
+        box2.scale.set(14, 25)
+        scene.add(box2);   // シーンに追加
+
+        var box3 = new THREE.Mesh(geometry, material);
+        box3.position.set(-9, 6, -12.5*i); //位置を指定
+        box3.scale.set(14, 25)
+        scene.add(box3);   // シーンに追加
+
+        var box4 = new THREE.Mesh(geometry, material);
+        box4.position.set(-3.5, 6, -12*i); //位置を指定
+        box4.scale.set(14, 25)
+        scene.add(box4);   // シーンに追加
+
+        var box5 = new THREE.Mesh(geometry, material);
+        box5.position.set(3.5, 6, -12*i); //位置を指定
+        box5.scale.set(14, 25)
+        scene.add(box5);   // シーンに追加
+
+        //襖２
+        var box6 = new THREE.Mesh(geometry, material);
+        box6.position.set(9, 6, -36.5); //位置を指定
+        box6.scale.set(14, 25)
+        scene.add(box6);   // シーンに追加
+
+        var box7 = new THREE.Mesh(geometry, material);
+        box7.position.set(-9, 6, -36.5); //位置を指定
+        box7.scale.set(14, 25)
+        scene.add(box7);   // シーンに追加
+
+        var box8 = new THREE.Mesh(geometry, material);
+        box8.position.set(-3.5, 6, -36); //位置を指定
+        box8.scale.set(14, 25)
+        scene.add(box8);   // シーンに追加
+
+        var box9 = new THREE.Mesh(geometry, material);
+        box9.position.set(3.5, 6, -36); //位置を指定
+        box9.scale.set(14, 25)
+        scene.add(box9);   // シーンに追加
+
+
+        update();
+
+        // 毎フレーム時に実行されるループイベントです
+        function update() {
+          // レンダリング
+          renderer.render(scene, camera);
+          requestAnimationFrame(update);
+          box.position.z -= 0.02;
+          camera.position.z -=0.02;
+          camera.lookAt(box.position);
+
+          if(box.position.z <= box4.position.z - 12){
+            box.position.z = box4.position.z +12;
+            camera.position.set(0, 2, box4.position.z +22);
+          }
+
+          // 襖を動かす
+          if(box.position.z <= box4.position.z +10 && box.position.z >= box4.position.z && box4.position.x >= -9){
+            box4.position.x -=0.02;
+          }else if(box4.position.x <= -3.5){
+            box4.position.x +=0.01;
+          }
+
+          if(box.position.z <= box5.position.z +10 && box.position.z >= box5.position.z && box5.position.x <= 9){
+            box5.position.x +=0.02;
+          }else if(box5.position.x >= +3.5){
+            box5.position.x -=0.01;
+          }
+
+      }
+    }
+    </script>
+</body>
