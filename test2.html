@@ -30,7 +30,7 @@
         // カメラを作成
         const camera = new THREE.PerspectiveCamera(45, width / height);
         // カメラの初期座標を設定
-        camera.position.set(0, 2, 10);
+        camera.position.set(0, 1, 10);
         camera.lookAt(0,0,0);
 
         // カメラコントローラーを作成
@@ -183,11 +183,12 @@
 
           if(box.position.z <= box4.position.z - 12){
             box.position.z = box4.position.z +12;
-            camera.position.set(0, 2, box4.position.z +22);
+            camera.position.set(0, 1, box4.position.z +22);
             //box4.scene.remove(mesh);
-            box4 = THREE.Mesh(geometry, mat3);
+            //box4 = THREE.Mesh(geometry, mat3);
             //box4.Mesh = (geometry,mat3);
             //texture1 = textureLoader.load("img/stone.jpg");
+            mat1.map = texture3;
           }
 
           // 襖を動かす
