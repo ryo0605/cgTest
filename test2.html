@@ -184,6 +184,7 @@
           if(box.position.z <= box4.position.z - 12){
             box.position.z = box4.position.z +12;
             camera.position.set(0, 2, box4.position.z +22);
+            var box4 = new THREE.Mesh(geometry, mat3);
           }
 
           // 襖を動かす
