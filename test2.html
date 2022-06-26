@@ -55,9 +55,17 @@
 
         // テクスチャー読み込み
         var textureLoader = new THREE.TextureLoader();
-        var texture = textureLoader.load("img/stone.jpg");
-        var mat = new THREE.MeshPhongMaterial();
-        mat.map = texture;
+        var texture1 = textureLoader.load("img/japanL.jpg");
+        var mat1 = new THREE.MeshPhongMaterial();
+        mat1.map = texture1;
+
+        var texture2 = textureLoader.load("img/japanR.jpg");
+        var mat2 = new THREE.MeshPhongMaterial();
+        mat2.map = texture2;
+
+        var texture3 = textureLoader.load("img/stone.jpg");
+        var mat3 = new THREE.MeshPhongMaterial();
+        mat3.map = texture3;
 
 
         //floor
@@ -115,12 +123,12 @@
         var geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
         var material = new THREE.MeshPhongMaterial({ color: 0x0000ff });
         //var box = new THREE.Mesh(geometry, material);
-        var box = new THREE.Mesh(geometry, mat);
+        var box = new THREE.Mesh(geometry, mat3);
         box.position.set(0, 0, 0); //位置を指定
         scene.add(box);   // シーンに追加
 
         //襖1
-        var box2 = new THREE.Mesh(geometry, mat);
+        var box2 = new THREE.Mesh(geometry, material);
         box2.position.set(9, 6, -12.5*i); //位置を指定
         box2.scale.set(14, 25)
         scene.add(box2);   // シーンに追加
@@ -130,12 +138,12 @@
         box3.scale.set(14, 25)
         scene.add(box3);   // シーンに追加
 
-        var box4 = new THREE.Mesh(geometry, material);
+        var box4 = new THREE.Mesh(geometry, mat1);
         box4.position.set(-3.5, 6, -12*i); //位置を指定
         box4.scale.set(14, 25)
         scene.add(box4);   // シーンに追加
 
-        var box5 = new THREE.Mesh(geometry, material);
+        var box5 = new THREE.Mesh(geometry, mat2);
         box5.position.set(3.5, 6, -12*i); //位置を指定
         box5.scale.set(14, 25)
         scene.add(box5);   // シーンに追加
