@@ -54,9 +54,8 @@
         scene.add(axisHelper);
 
         // テクスチャー読み込み
-        // テクスチャー読み込み
         var textureLoader = new THREE.TextureLoader();
-        var texture = textureLoader.load("img/japan.png");
+        var texture = textureLoader.load("img/stone.png");
         var mat = new THREE.MeshPhongMaterial();
         mat.map = texture;
 
@@ -121,7 +120,7 @@
         scene.add(box);   // シーンに追加
 
         //襖1
-        var box2 = new THREE.Mesh(geometry, material);
+        var box2 = new THREE.Mesh(geometry, mat);
         box2.position.set(9, 6, -12.5*i); //位置を指定
         box2.scale.set(14, 25)
         scene.add(box2);   // シーンに追加
