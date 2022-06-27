@@ -55,17 +55,32 @@
 
         // テクスチャー読み込み
         var textureLoader = new THREE.TextureLoader();
-        var texture1 = textureLoader.load("img/japanL.jpg");
-        var mat1 = new THREE.MeshPhongMaterial();
-        mat1.map = texture1;
+        var japanL = textureLoader.load("img/japanL.jpg");
+        var matL = new THREE.MeshPhongMaterial();
+        matL.map = japanL;
 
-        var texture2 = textureLoader.load("img/japanR.jpg");
+        var japanR = textureLoader.load("img/japanR.jpg");
+        var matR = new THREE.MeshPhongMaterial();
+        matR.map = japanR;
+
+        var paper = textureLoader.load("img/paper.jpg");
         var mat2 = new THREE.MeshPhongMaterial();
-        mat2.map = texture2;
+        mat2.map = paper;
 
-        var texture3 = textureLoader.load("img/stone.jpg");
-        var mat3 = new THREE.MeshPhongMaterial();
-        mat3.map = texture3;
+        var USAL = textureLoader.load("img/americaL.jpg");
+        var USAR = textureLoader.load("img/americaR.jpg");
+        var chiL = textureLoader.load("img/chinaL.jpg");
+        var chiR = textureLoader.load("img/chinaR.jpg");
+        var fraL = textureLoader.load("img/franceL.jpg");
+        var fraR = textureLoader.load("img/franceR.jpg");
+        var gerL = textureLoader.load("img/germanyL.jpg");
+        var gerR = textureLoader.load("img/germanyR.jpg");
+        var itaL = textureLoader.load("img/italyL.jpg");
+        var itaR = textureLoader.load("img/italyR.jpg");
+        var UKL = textureLoader.load("img/UKL.jpg");
+        var UKR = textureLoader.load("img/UKR.jpg");
+
+        var i = 1;
 
 
         //floor
@@ -115,56 +130,52 @@
         plane7.scale.set(1,0.5);
         scene.add(plane7);
 
-
-        var i = 1;
-        var n = 3;
-
         // 箱を作成
         var geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
         var material = new THREE.MeshPhongMaterial({ color: 0x0000ff });
         //var box = new THREE.Mesh(geometry, material);
-        var box = new THREE.Mesh(geometry, mat3);
+        var box = new THREE.Mesh(geometry, mat2);
         box.position.set(0, 0, 0); //位置を指定
         scene.add(box);   // シーンに追加
 
         //襖1
-        var box2 = new THREE.Mesh(geometry, material);
+        var box2 = new THREE.Mesh(geometry, mat2);
         box2.position.set(9, 6, -12.5*i); //位置を指定
         box2.scale.set(14, 25)
         scene.add(box2);   // シーンに追加
 
-        var box3 = new THREE.Mesh(geometry, material);
+        var box3 = new THREE.Mesh(geometry, mat2);
         box3.position.set(-9, 6, -12.5*i); //位置を指定
         box3.scale.set(14, 25)
         scene.add(box3);   // シーンに追加
 
-        var box4 = new THREE.Mesh(geometry, mat1);
+        var box4 = new THREE.Mesh(geometry, matL);
         box4.position.set(-3.5, 6, -12*i); //位置を指定
         box4.scale.set(14, 25)
         scene.add(box4);   // シーンに追加
 
-        var box5 = new THREE.Mesh(geometry, mat2);
+        var box5 = new THREE.Mesh(geometry, matR);
         box5.position.set(3.5, 6, -12*i); //位置を指定
         box5.scale.set(14, 25)
         scene.add(box5);   // シーンに追加
 
         //襖２
-        var box6 = new THREE.Mesh(geometry, material);
+        var box6 = new THREE.Mesh(geometry, mat2);
         box6.position.set(9, 6, -36.5); //位置を指定
         box6.scale.set(14, 25)
         scene.add(box6);   // シーンに追加
 
-        var box7 = new THREE.Mesh(geometry, material);
+        var box7 = new THREE.Mesh(geometry, mat2);
         box7.position.set(-9, 6, -36.5); //位置を指定
         box7.scale.set(14, 25)
         scene.add(box7);   // シーンに追加
 
-        var box8 = new THREE.Mesh(geometry, material);
+        var box8 = new THREE.Mesh(geometry, matL);
         box8.position.set(-3.5, 6, -36); //位置を指定
         box8.scale.set(14, 25)
         scene.add(box8);   // シーンに追加
 
-        var box9 = new THREE.Mesh(geometry, material);
+        var box9 = new THREE.Mesh(geometry, matR);
         box9.position.set(3.5, 6, -36); //位置を指定
         box9.scale.set(14, 25)
         scene.add(box9);   // シーンに追加
@@ -184,11 +195,28 @@
           if(box.position.z <= box4.position.z - 12){
             box.position.z = box4.position.z +12;
             camera.position.set(0, 1, box4.position.z +22);
-            //box4.scene.remove(mesh);
-            //box4 = THREE.Mesh(geometry, mat3);
-            //box4.Mesh = (geometry,mat3);
-            //texture1 = textureLoader.load("img/stone.jpg");
             mat1.map = texture3;
+            if(i%7 == 0){
+              matL.map = japanL;
+              matR.map =japanR;
+            }else if(i%7 == 1){
+              matL.map =USAL;
+              matR.map =USAR;
+            }else if(i%7 == 2){
+              matL.map =chiL;
+              matR.map =chiR;
+            }else if(i%7 == 3){
+              matL.map =fraL;
+              matR.map =fraR;
+            }else if(i%7 == 4){
+              matL.map =gerL;
+              matR.map =gerR;
+            }else if(i%7 == 5){
+              matL.map =itaL;
+              matR.map =itaR;
+            }else if(i%7 == 6){
+              matL.map =UKL;
+            }
           }
 
           // 襖を動かす
