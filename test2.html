@@ -64,8 +64,8 @@
         matR.map = japanR;
 
         var paper = textureLoader.load("img/jPaper.jpg");
-        var mat = new THREE.MeshPhongMaterial();
-        mat.map = paper;
+        var mat3 = new THREE.MeshPhongMaterial();
+        mat3.map = paper;
 
         var USAL = textureLoader.load("img/americaL.jpg");
         var USAR = textureLoader.load("img/americaR.jpg");
@@ -151,12 +151,12 @@
         scene.add(box);   // シーンに追加
 
         //襖1
-        var box2 = new THREE.Mesh(geometry, mat);
+        var box2 = new THREE.Mesh(geometry, mat3);
         box2.position.set(9, 6, -12.5); //位置を指定
         box2.scale.set(14, 25)
         scene.add(box2);   // シーンに追加
 
-        var box3 = new THREE.Mesh(geometry, mat);
+        var box3 = new THREE.Mesh(geometry, mat3);
         box3.position.set(-9, 6, -12.5); //位置を指定
         box3.scale.set(14, 25)
         scene.add(box3);   // シーンに追加
@@ -172,12 +172,12 @@
         scene.add(box5);   // シーンに追加
 
         //襖２
-        var box6 = new THREE.Mesh(geometry, mat);
+        var box6 = new THREE.Mesh(geometry, mat3);
         box6.position.set(9, 6, -36.5);
         box6.scale.set(14, 25)
         scene.add(box6);
 
-        var box7 = new THREE.Mesh(geometry, mat);
+        var box7 = new THREE.Mesh(geometry, mat3);
         box7.position.set(-9, 6, -36.5);
         box7.scale.set(14, 25)
         scene.add(box7);
@@ -193,12 +193,12 @@
         scene.add(box9);
 
         //襖3
-        var box10 = new THREE.Mesh(geometry, mat);
+        var box10 = new THREE.Mesh(geometry, mat3);
         box10.position.set(9, 6, 12);
         box10.scale.set(14, 25)
         scene.add(box10);
 
-        var box11 = new THREE.Mesh(geometry, mat);
+        var box11 = new THREE.Mesh(geometry, mat3);
         box11.position.set(-9, 6, 12);
         box11.scale.set(14, 25)
         scene.add(box11);
@@ -362,7 +362,7 @@
               mat2L.map = japanL;
               mat2R.map = japanR;
             }
-            i += 2;
+            i += 1;
           }
 
           // 襖を動かす
