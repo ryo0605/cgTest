@@ -94,6 +94,15 @@
         var mat4 = new THREE.MeshPhongMaterial();
         mat4.map = tatami;
 
+        let mat1L = [
+            new THREE.MeshBasicMaterial({map1L1: USAL}),
+            new THREE.MeshBasicMaterial({map1L2: chiL}),
+            new THREE.MeshBasicMaterial({map1L3: fraL}),
+            new THREE.MeshBasicMaterial({map1L4: gerL}),
+            new THREE.MeshBasicMaterial({map1L5: itaL}),
+            new THREE.MeshBasicMaterial({map1L6: UKL})
+        ];
+
         var i = 1;
 
 
@@ -148,7 +157,7 @@
         var geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
         var material = new THREE.MeshPhongMaterial({ color: 0x0000ff });
         //var box = new THREE.Mesh(geometry, material);
-        var box = new THREE.Mesh(geometry, mat3);
+        var box = new THREE.Mesh(geometry, mat1L);
         box.position.set(0, 0, 0); //位置を指定
         scene.add(box);   // シーンに追加
 
@@ -267,14 +276,14 @@
         var sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
         sphere.position.set( 0, 0.2, 0 );
         scene.add( sphere );
-        const pointLight = new THREE.PointLight(0xffffff, 0.5);
+        const pointLight = new THREE.PointLight(0xffffff, 0.2);
         pointLight.position.set(0, 0, 0);
         scene.add(pointLight);
 
         var sphere2 = new THREE.Mesh( sphereGeometry, sphereMaterial );
         sphere2.position.set( 0, 0.2, 0 );
         scene.add( sphere2 );
-        const pointLight2 = new THREE.PointLight(0xffffff, 0.5);
+        const pointLight2 = new THREE.PointLight(0xffffff, 0.2);
         pointLight2.position.set(0, 0, 0);
         scene.add(pointLight2);
 
