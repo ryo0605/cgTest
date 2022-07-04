@@ -318,7 +318,7 @@
           requestAnimationFrame(update);
           box.position.z -= 0.02;
           camera.position.z -=0.02;
-          //camera.lookAt(box.position);
+          camera.lookAt(box.position);
 
           if(box.position.z <= box4.position.z - 12){
             box.position.z = box4.position.z + 12;
@@ -331,7 +331,7 @@
               mat2L.map = USAL;
               mat2R.map = USAR;
 
-              mat1L.map = UKL;
+              mat1L.map = [UKL,UKL,UKL,UKL,UKL,UKL];
 
             }else if(i%7 == 1){
               mat3L.map = japanL;
