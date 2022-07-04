@@ -197,9 +197,9 @@
           // レンダリング
           renderer.render(scene, camera);
           requestAnimationFrame(update);
-          box.position.z -= 0.02;
-          camera.position.z -=0.02;
-          camera.lookAt(box.position);
+          box.position.z -= 0.04;
+          camera.position.z -=0.04;
+          //camera.lookAt(box.position);
 
           if(box.position.z <= box4.position.z - 12){
             box.position.z = box4.position.z +12;
