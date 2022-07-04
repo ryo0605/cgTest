@@ -189,6 +189,27 @@
         box9.scale.set(14, 25)
         scene.add(box9);   // シーンに追加
 
+        //襖3
+        var box10 = new THREE.Mesh(geometry, mat);
+        box10.position.set(9, 6, 12);
+        box10.scale.set(14, 25)
+        scene.add(box10);
+
+        var box11 = new THREE.Mesh(geometry, mat);
+        box11.position.set(-9, 6, 12);
+        box11.scale.set(14, 25)
+        scene.add(box11);
+
+        var box12 = new THREE.Mesh(geometry, mat3L);
+        box12.position.set(-3.5, 6, 12.5);
+        box12.scale.set(14, 25)
+        scene.add(box12);
+
+        var box13 = new THREE.Mesh(geometry, mat3R);
+        box13.position.set(3.5, 6, 12.5);
+        box13.scale.set(14, 25)
+        scene.add(box13);
+
         //照明
         var torusGeometry = new THREE.TorusGeometry( 0.5, 0.1, 6, 160 );
         var torusMaterial = new THREE. MeshPhongMaterial( { color: 0xffffff } );
@@ -286,43 +307,57 @@
           //camera.lookAt(box.position);
 
           if(box.position.z <= box4.position.z - 12){
-            box.position.z = box4.position.z +12;
-            camera.position.set(0, 1, box4.position.z +22);
+            box.position.z = box4.position.z + 12;
+            camera.position.set(0, 1, box4.position.z + 22);
             if(i%7 == 0){
+              //mat3L.map = UKL;
+              //mat3R.map = UKR;
               matL.map = japanL;
-              matR.map =japanR;
-              mat2L.map =USAL;
-              mat2R.map =USAR;
+              matR.map = japanR;
+              mat2L.map = USAL;
+              mat2R.map = USAR;
             }else if(i%7 == 1){
-              matL.map =USAL;
-              matR.map =USAR;
-              mat2L.map =chiL;
-              mat2R.map =chiR;
+              //mat3L.map = japanL;
+              //mat3R.map = japanR;
+              matL.map = USAL;
+              matR.map = USAR;
+              mat2L.map = chiL;
+              mat2R.map = chiR;
             }else if(i%7 == 2){
-              matL.map =chiL;
-              matR.map =chiR;
-              mat2L.map =fraL;
-              mat2R.map =fraR;
+              //mat3L.map = USAL;
+             // mat3R.map = USAR;
+             // matL.map = chiL;
+             // matR.map = chiR;
+              mat2L.map = fraL;
+              mat2R.map = fraR;
             }else if(i%7 == 3){
-              matL.map =fraL;
-              matR.map =fraR;
-              mat2L.map =gerL;
-              mat2R.map =gerR;
+              //mat3L.map = chiL;
+              //mat3R.map = chiR;
+              matL.map = fraL;
+              matR.map = fraR;
+              mat2L.map = gerL;
+              mat2R.map = gerR;
             }else if(i%7 == 4){
-              matL.map =gerL;
-              matR.map =gerR;
-              mat2L.map =itaL;
-              mat2R.map =itaR;
+              //mat3L.map = fraL;
+              //mat3R.map = fraR;
+              matL.map = gerL;
+              matR.map = gerR;
+              mat2L.map = itaL;
+              mat2R.map = itaR;
             }else if(i%7 == 5){
-              matL.map =itaL;
-              matR.map =itaR;
-              mat2L.map =UKL;
-              mat2R.map =UKR;
+              //mat3L.map = gerL;
+              //mat3R.map = gerR;
+              matL.map = itaL;
+              matR.map = itaR;
+              mat2L.map = UKL;
+              mat2R.map = UKR;
             }else if(i%7 == 6){
-              matL.map =UKL;
-              matR.map =UKR;
+              //mat3L.map = itaL;
+              //mat3R.map = itaR;
+              matL.map = UKL;
+              matR.map = UKR;
               mat2L.map = japanL;
-              mat2R.map =japanR;
+              mat2R.map = japanR;
             }
             i += 1;
           }
