@@ -1,0 +1,384 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/three@0.137.4/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.137.4/examples/js/controls/OrbitControls.js"></script>
+  </head>
+<body>
+ <h1>背景色を付けた</h1>
+ 背景色をつけてみた
+ <script>
+      // ページの読み込みを待つ
+      window.addEventListener('DOMContentLoaded', init);
+
+      function init() {
+        // サイズを指定
+        const width = 800;
+        const height = 600;
+
+        // レンダラーを作成
+        var renderer = new THREE.WebGLRenderer();
+        document.body.appendChild(renderer.domElement);
+        renderer.setSize(width, height);
+        // 背景の色を設定
+        renderer.setClearColor(0xffffdd);
+
+
+        // シーンを作成
+        const scene = new THREE.Scene();
+
+        // カメラを作成
+        const camera = new THREE.PerspectiveCamera(45, width / height);
+        // カメラの初期座標を設定
+        camera.position.set(0, 1, 10);
+        camera.lookAt(0,0,0);
+
+        // カメラコントローラーを作成
+        const controls = new THREE.OrbitControls(camera, document.body); 
+        
+        // 平行光源1
+        var directionalLight1 = new THREE.DirectionalLight(0xffffff);
+        directionalLight1.position.set(10, 10, 10);
+        // シーンに追加
+        scene.add(directionalLight1);
+        // 平行光源2
+        var directionalLight2 = new THREE.DirectionalLight(0x888888);
+        directionalLight2.position.set(-10, -10, 10);
+        // シーンに追加
+        scene.add(directionalLight2);
+
+        // helper
+        const gridHelper = new THREE.GridHelper(5,10); // size, step
+        //scene.add(gridHelper);
+        const axisHelper = new THREE.AxisHelper(2); //軸の長さ　X：赤、Y：緑、z：青
+        //scene.add(axisHelper);
+
+        // テクスチャー読み込み
+        var textureLoader = new THREE.TextureLoader();
+        var japanL = textureLoader.load("img/japanL.jpg");
+        var matL = new THREE.MeshPhongMaterial();
+        matL.map = japanL;
+
+        var japanR = textureLoader.load("img/japanR.jpg");
+        var matR = new THREE.MeshPhongMaterial();
+        matR.map = japanR;
+
+        var paper = textureLoader.load("img/jPaper.jpg");
+        var mat = new THREE.MeshPhongMaterial();
+        mat.map = paper;
+
+        var USAL = textureLoader.load("img/americaL.jpg");
+        var USAR = textureLoader.load("img/americaR.jpg");
+        var chiL = textureLoader.load("img/chinaL.jpg");
+        var chiR = textureLoader.load("img/chinaR.jpg");
+        var fraL = textureLoader.load("img/franceL.jpg");
+        var fraR = textureLoader.load("img/franceR.jpg");
+        var gerL = textureLoader.load("img/germanyL.jpg");
+        var gerR = textureLoader.load("img/germanyR.jpg");
+        var itaL = textureLoader.load("img/italyL.jpg");
+        var itaR = textureLoader.load("img/italyR.jpg");
+        var UKL = textureLoader.load("img/UKL.jpg");
+        var UKR = textureLoader.load("img/UKR.jpg");
+        var tatami = textureLoader.load("img/tatami02.jpg");
+
+        var mat2L = new THREE.MeshPhongMaterial();
+        mat2L.map = USAL;
+        var mat2R = new THREE.MeshPhongMaterial();
+        mat2R.map = USAR;
+
+        var mat3L = new THREE.MeshPhongMaterial();
+        mat3L.map = UKL;
+        var mat3R = new THREE.MeshPhongMaterial();
+        mat3R.map = UKR;
+
+        var mat4 = new THREE.MeshPhongMaterial();
+        mat4.map = tatami;
+
+
+        //floor
+        var geometryF = new THREE.PlaneGeometry(25,25,25,25);
+        var materialF = new THREE.MeshBasicMaterial({ color: 0xffffff });
+        var floor = new THREE.Mesh(geometryF, tatami);
+        floor.rotation.set( -Math.PI/2, 0, 0 );
+        floor.position.set(0,0,0);
+        scene.add(floor);
+
+        var plane1 = new THREE.Mesh(geometryF, materialF);
+        plane1.rotation.set( Math.PI/2, 0, 0 );
+        plane1.position.set(0,12,0);
+        scene.add(plane1);
+
+        var plane2 = new THREE.Mesh(geometryF, materialF);
+        plane2.rotation.set(0, Math.PI/2, 0 );
+        plane2.position.set(-12.5,6,0);
+        plane2.scale.set(1,0.5);
+        scene.add(plane2);
+
+        var plane3 = new THREE.Mesh(geometryF, materialF);
+        plane3.rotation.set(0, -Math.PI/2, 0 );
+        plane3.position.set(12.5,6,0);
+        plane3.scale.set(1,0.5);
+        scene.add(plane3);
+
+        var plane4 = new THREE.Mesh(geometryF, tatami);
+        plane4.rotation.set( -Math.PI/2, 0, 0 );
+        plane4.position.set(0,0,-24);
+        scene.add(plane4);
+        
+        var plane5 = new THREE.Mesh(geometryF, materialF);
+        plane5.rotation.set( Math.PI/2, 0, 0 );
+        plane5.position.set(0,12,-24);
+        scene.add(plane5);
+
+        var plane6 = new THREE.Mesh(geometryF, materialF);
+        plane6.rotation.set(0, Math.PI/2, 0 );
+        plane6.position.set(-12.5,6,-24);
+        plane6.scale.set(1,0.5);
+        scene.add(plane6);
+
+        var plane7 = new THREE.Mesh(geometryF, materialF);
+        plane7.rotation.set(0, -Math.PI/2, 0 );
+        plane7.position.set(12.5,6,-24);
+        plane7.scale.set(1,0.5);
+        scene.add(plane7);
+
+        // 箱を作成
+        var geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+        var material = new THREE.MeshPhongMaterial({ color: 0x0000ff });
+        //var box = new THREE.Mesh(geometry, material);
+        var box = new THREE.Mesh(geometry, mat);
+        box.position.set(0, 0, 0); //位置を指定
+        scene.add(box);   // シーンに追加
+
+        //襖1
+        var box2 = new THREE.Mesh(geometry, mat);
+        box2.position.set(9, 6, -12.5); //位置を指定
+        box2.scale.set(14, 25)
+        scene.add(box2);   // シーンに追加
+
+        var box3 = new THREE.Mesh(geometry, mat);
+        box3.position.set(-9, 6, -12.5); //位置を指定
+        box3.scale.set(14, 25)
+        scene.add(box3);   // シーンに追加
+
+        var box4 = new THREE.Mesh(geometry, matL);
+        box4.position.set(-3.5, 6, -12); //位置を指定
+        box4.scale.set(14, 25)
+        scene.add(box4);   // シーンに追加
+
+        var box5 = new THREE.Mesh(geometry, matR);
+        box5.position.set(3.5, 6, -12); //位置を指定
+        box5.scale.set(14, 25)
+        scene.add(box5);   // シーンに追加
+
+        //襖２
+        var box6 = new THREE.Mesh(geometry, mat);
+        box6.position.set(9, 6, -36.5);
+        box6.scale.set(14, 25)
+        scene.add(box6);
+
+        var box7 = new THREE.Mesh(geometry, mat);
+        box7.position.set(-9, 6, -36.5);
+        box7.scale.set(14, 25)
+        scene.add(box7);
+
+        var box8 = new THREE.Mesh(geometry, mat2L);
+        box8.position.set(-3.5, 6, -36);
+        box8.scale.set(14, 25)
+        scene.add(box8);
+
+        var box9 = new THREE.Mesh(geometry, mat2R);
+        box9.position.set(3.5, 6, -36);
+        box9.scale.set(14, 25)
+        scene.add(box9);
+
+        //襖3
+        var box10 = new THREE.Mesh(geometry, mat);
+        box10.position.set(9, 6, 12);
+        box10.scale.set(14, 25)
+        scene.add(box10);
+
+        var box11 = new THREE.Mesh(geometry, mat);
+        box11.position.set(-9, 6, 12);
+        box11.scale.set(14, 25)
+        scene.add(box11);
+
+        var box12 = new THREE.Mesh(geometry, mat3L);
+        box12.position.set(-3.5, 6, 12.5);
+        box12.scale.set(14, 25)
+        scene.add(box12);
+
+        var box13 = new THREE.Mesh(geometry, mat3R);
+        box13.position.set(3.5, 6, 12.5);
+        box13.scale.set(14, 25)
+        scene.add(box13);
+
+        //照明
+        var torusGeometry = new THREE.TorusGeometry( 0.5, 0.1, 6, 160 );
+        var torusMaterial = new THREE. MeshPhongMaterial( { color: 0xffffff } );
+        var torus = new THREE.Mesh( torusGeometry, torusMaterial );
+        torus.position.set( 0, 0, 0);
+        torus.rotation.set(-Math.PI/2, 0, 0 );
+        torus.scale.z = 4;
+        scene.add( torus );
+
+        var torus2 = new THREE.Mesh( torusGeometry, torusMaterial );
+        torus2.position.set( 0, 0, 0);
+        torus2.rotation.set(-Math.PI/2, 0, 0 );
+        torus2.scale.z = 4;
+        scene.add( torus2 );
+
+        const coneGeometry = new THREE.ConeGeometry(5, 1, 64);
+        const cone = new THREE.Mesh(coneGeometry, torusMaterial);
+        cone.position.set(0, 0.4, 0);
+        cone.scale.set(0.1, 0.1, 0.1);
+        scene.add(cone);
+
+        const cone2 = new THREE.Mesh(coneGeometry, torusMaterial);
+        cone2.position.set(0, 0.4, 0);
+        cone2.scale.set(0.1, 0.1, 0.1);
+        scene.add(cone2);
+
+        var cylinderGeometry = new THREE.CylinderGeometry( 1, 1, 1, 8 );
+        var cylinderMaterial = new THREE.MeshPhongMaterial( {color: 0x000000} );
+        var cylinder = new THREE.Mesh( cylinderGeometry, cylinderMaterial );
+        cylinder.position.set(0, 0.94, 0);
+        cylinder.scale.set(0.05, 1, 0.05);
+        scene.add( cylinder );
+
+        var cylinder2 = new THREE.Mesh( cylinderGeometry, cylinderMaterial );
+        cylinder2.position.set(0, 0.94, 0);
+        cylinder2.scale.set(0.05, 1, 0.05);
+        scene.add( cylinder2 );
+
+        var lboxGeometry = new THREE.BoxGeometry(0.2, 0.1, 0.2);
+        var lbox = new THREE.Mesh(lboxGeometry, torusMaterial);
+        lbox.position.set(0, 1.45, 0);
+        scene.add(lbox);
+
+        var lbox2 = new THREE.Mesh(lboxGeometry, torusMaterial);
+        lbox2.position.set(0, 1.45, 0);
+        scene.add(lbox2);
+
+        var sphereGeometry = new THREE.SphereGeometry( 0.15, 32, 32 );
+        var sphereMaterial = new THREE. MeshPhongMaterial( {color: 0xffffff});
+        var sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
+        sphere.position.set( 0, 0.2, 0 );
+        scene.add( sphere );
+        const pointLight = new THREE.PointLight(0xffffff, 0.5);
+        pointLight.position.set(0, 0, 0);
+        scene.add(pointLight);
+
+        var sphere2 = new THREE.Mesh( sphereGeometry, sphereMaterial );
+        sphere2.position.set( 0, 0.2, 0 );
+        scene.add( sphere2 );
+        const pointLight2 = new THREE.PointLight(0xffffff, 0.5);
+        pointLight2.position.set(0, 0, 0);
+        scene.add(pointLight2);
+
+        var light1 = new THREE.Group();
+        light1.add(torus);
+        light1.add(cone);
+        light1.add(cylinder);
+        light1.add(lbox);
+        light1.add(sphere);
+        light1.add(pointLight);
+        light1.position.set(0, 10.5, 0);
+        scene.add(light1);
+
+        var light2 = new THREE.Group();
+        light2.add(torus2);
+        light2.add(cone2);
+        light2.add(cylinder2);
+        light2.add(lbox2);
+        light2.add(sphere2);
+        light2.add(pointLight2);
+        light2.position.set(0, 10.5, -24);
+        scene.add(light2);
+
+
+
+        update();
+
+        // 毎フレーム時に実行されるループイベントです
+        function update() {
+          // レンダリング
+          renderer.render(scene, camera);
+          requestAnimationFrame(update);
+          box.position.z -= 0.02;
+          camera.position.z -=0.02;
+          //camera.lookAt(box.position);
+
+          if(box.position.z <= box4.position.z - 12){
+            box.position.z = box4.position.z + 12;
+            camera.position.set(0, 1, box4.position.z + 22);
+            if(i%7 == 0){
+              //mat3L.map = UKL;
+              //mat3R.map = UKR;
+              matL.map = japanL;
+              matR.map = japanR;
+              mat2L.map = USAL;
+              mat2R.map = USAR;
+            }else if(i%7 == 1){
+              //mat3L.map = japanL;
+              //mat3R.map = japanR;
+              matL.map = USAL;
+              matR.map = USAR;
+              mat2L.map = chiL;
+              mat2R.map = chiR;
+            }else if(i%7 == 2){
+              //mat3L.map = USAL;
+             // mat3R.map = USAR;
+             // matL.map = chiL;
+             // matR.map = chiR;
+              mat2L.map = fraL;
+              mat2R.map = fraR;
+            }else if(i%7 == 3){
+              //mat3L.map = chiL;
+              //mat3R.map = chiR;
+              matL.map = fraL;
+              matR.map = fraR;
+              mat2L.map = gerL;
+              mat2R.map = gerR;
+            }else if(i%7 == 4){
+              //mat3L.map = fraL;
+              //mat3R.map = fraR;
+              matL.map = gerL;
+              matR.map = gerR;
+              mat2L.map = itaL;
+              mat2R.map = itaR;
+            }else if(i%7 == 5){
+              //mat3L.map = gerL;
+              //mat3R.map = gerR;
+              matL.map = itaL;
+              matR.map = itaR;
+              mat2L.map = UKL;
+              mat2R.map = UKR;
+            }else if(i%7 == 6){
+              //mat3L.map = itaL;
+              //mat3R.map = itaR;
+              matL.map = UKL;
+              matR.map = UKR;
+              mat2L.map = japanL;
+              mat2R.map = japanR;
+            }
+            i += 1;
+          }
+
+          // 襖を動かす
+          if(box.position.z <= box4.position.z +10 && box.position.z >= box4.position.z && box4.position.x >= -9){
+            box4.position.x -=0.02;
+          }else if(box4.position.x <= -3.5){
+            box4.position.x +=0.01;
+          }
+
+          if(box.position.z <= box5.position.z +10 && box.position.z >= box5.position.z && box5.position.x <= 9){
+            box5.position.x +=0.02;
+          }else if(box5.position.x >= +3.5){
+            box5.position.x -=0.01;
+          }
+
+      }
+    }
+    </script>
+</body>
