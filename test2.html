@@ -310,8 +310,8 @@
           //camera.lookAt(box.position);
 
           if(box.position.z <= box4.position.z - 12){
-            box.position.z = box4.position.z +12;
-            camera.position.set(0, 1, box4.position.z +22);
+            box.position.z = box4.position.z + 12;
+            camera.position.set(0, 1, box4.position.z + 22);
             if(i%7 == 0){
               mat3L.map = UKL;
               mat3R.map = UKR;
@@ -319,7 +319,6 @@
               matR.map = japanR;
               mat2L.map = USAL;
               mat2R.map = USAR;
-
             }else if(i%7 == 1){
               mat3L.map = japanL;
               mat3R.map = japanR;
@@ -363,7 +362,7 @@
               mat2L.map = japanL;
               mat2R.map = japanR;
             }
-            i += 1;
+            i += 2;
           }
 
           // 襖を動かす
