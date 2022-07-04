@@ -189,6 +189,90 @@
         box9.scale.set(14, 25)
         scene.add(box9);   // シーンに追加
 
+        //照明
+        var torusGeometry = new THREE.TorusGeometry( 0.5, 0.1, 6, 160 );
+        var torusMaterial = new THREE. MeshPhongMaterial( { color: 0xffffff } );
+        var torus = new THREE.Mesh( torusGeometry, torusMaterial );
+        torus.position.set( 0, 0, 0);
+        torus.rotation.set(-Math.PI/2, 0, 0 );
+        torus.scale.z = 4;
+        scene.add( torus );
+
+        var torus2 = new THREE.Mesh( torusGeometry, torusMaterial );
+        torus2.position.set( 0, 0, 0);
+        torus2.rotation.set(-Math.PI/2, 0, 0 );
+        torus2.scale.z = 4;
+        scene.add( torus2 );
+
+        const coneGeometry = new THREE.ConeGeometry(5, 1, 64);
+        const cone = new THREE.Mesh(coneGeometry, torusMaterial);
+        cone.position.set(0, 0.4, 0);
+        cone.scale.set(0.1, 0.1, 0.1);
+        scene.add(cone);
+
+        const cone2 = new THREE.Mesh(coneGeometry, torusMaterial);
+        cone2.position.set(0, 0.4, 0);
+        cone2.scale.set(0.1, 0.1, 0.1);
+        scene.add(cone2);
+
+        var cylinderGeometry = new THREE.CylinderGeometry( 1, 1, 1, 8 );
+        var cylinderMaterial = new THREE.MeshPhongMaterial( {color: 0x000000} );
+        var cylinder = new THREE.Mesh( cylinderGeometry, cylinderMaterial );
+        cylinder.position.set(0, 0.94, 0);
+        cylinder.scale.set(0.05, 1, 0.05);
+        scene.add( cylinder );
+
+        var cylinder2 = new THREE.Mesh( cylinderGeometry, cylinderMaterial );
+        cylinder2.position.set(0, 0.94, 0);
+        cylinder2.scale.set(0.05, 1, 0.05);
+        scene.add( cylinder2 );
+
+        var lboxGeometry = new THREE.BoxGeometry(0.2, 0.1, 0.2);
+        var lbox = new THREE.Mesh(lboxGeometry, torusMaterial);
+        lbox.position.set(0, 1.45, 0);
+        scene.add(lbox);
+
+        var lbox2 = new THREE.Mesh(lboxGeometry, torusMaterial);
+        lbox2.position.set(0, 1.45, 0);
+        scene.add(lbox2);
+
+        var sphereGeometry = new THREE.SphereGeometry( 0.15, 32, 32 );
+        var sphereMaterial = new THREE. MeshPhongMaterial( {color: 0xffffff});
+        var sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
+        sphere.position.set( 0, 0.2, 0 );
+        scene.add( sphere );
+        const pointLight = new THREE.PointLight(0xffffff, 2);
+        pointLight.position.set(0, 0, 0);
+        scene.add(pointLight);
+
+        var sphere2 = new THREE.Mesh( sphereGeometry, sphereMaterial );
+        sphere2.position.set( 0, 0.2, 0 );
+        scene.add( sphere2 );
+        const pointLight2 = new THREE.PointLight(0xffffff, 2);
+        pointLight2.position.set(0, 0, 0);
+        scene.add(pointLight2);
+
+        var light1 = new THREE.Group();
+        light1.add(torus);
+        light1.add(cone);
+        light1.add(cylinder);
+        light1.add(lbox);
+        light1.add(sphere);
+        light1.add(pointLight);
+        light1.position.set(0, 10.5, 0);
+        scene.add(light1);
+
+        var light2 = new THREE.Group();
+        light2.add(torus2);
+        light2.add(cone2);
+        light2.add(cylinder2);
+        light2.add(lbox2);
+        light2.add(sphere2);
+        light2.add(pointLight2);
+        light2.position.set(0, 10.5, -24);
+        scene.add(light2);
+
+
 
         update();
 
