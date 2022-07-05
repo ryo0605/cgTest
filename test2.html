@@ -152,10 +152,6 @@
         // 箱を作成
         var geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
         var material = new THREE.MeshPhongMaterial({ color: 0x0000ff });
-        //var box = new THREE.Mesh(geometry, material);
-        var box = new THREE.Mesh(geometry, mat3);
-        box.position.set(0, 0, 0); //位置を指定
-        scene.add(box);   // シーンに追加
 
         //襖1
         var box2 = new THREE.Mesh(geometry, mat3);
@@ -312,12 +308,11 @@
           // レンダリング
           renderer.render(scene, camera);
           requestAnimationFrame(update);
-          box.position.z -= 0.04;
           camera.position.z -= 0.04;
-          camera.lookAt(box.position);
+          //camera.lookAt(box.position);
 
-          if(box.position.z <= box4.position.z - 12){
-            box.position.z = box4.position.z + 12;
+          if(camera.position.z <= box4.position.z - 12){
+            camera.position.z = box4.position.z + 12;
             camera.position.set(0, 0.1, box4.position.z + 17);
             if(i%7 == 0){
               mat3R.map = UKL;
@@ -373,13 +368,13 @@
           }
 
           // 襖を動かす
-          if(box.position.z <= box4.position.z + 10 && box.position.z >= box4.position.z && box4.position.x >= -9){
+          if(camera.position.z <= box4.position.z + 10 && camera.position.z >= box4.position.z && box4.position.x >= -9){
             box4.position.x -= 0.04;
           }else if(box4.position.x <= -3.5){
             box4.position.x += 0.04;
           }
 
-          if(box.position.z <= box5.position.z + 10 && box.position.z >= box5.position.z && box5.position.x <= 9){
+          if(camera.position.z <= box5.position.z + 10 && camera.position.z >= box5.position.z && box5.position.x <= 9){
             box5.position.x += 0.04;
           }else if(box5.position.x >= 3.5){
             box5.position.x -= 0.04;
