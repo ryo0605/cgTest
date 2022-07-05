@@ -264,7 +264,7 @@
         var sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
         sphere.position.set( 0, 0.2, 0 );
         scene.add( sphere );
-        const pointLight = new THREE.PointLight(0xffffff, 0.5);
+        const pointLight = new THREE.PointLight(0xffffff, 2);
         pointLight.position.set(0, 0, 0);
         scene.add(pointLight);
 
@@ -365,11 +365,6 @@
           }
 
           // 襖を動かす
-         // if(box.position.z <= box4.position.z +10 && box.position.z >= box4.position.z && box4.position.x >= -9){
-          //  box4.position.x -=0.02;
-          //}else if(box4.position.x <= -3.5){
-          //  box4.position.x +=0.01;
-          //}
           if(box.position.z <= box4.position.z + 10 && box.position.z >= box4.position.z && box4.position.x >= -9){
             box4.position.x -= 0.04;
           }else if(box4.position.x <= -3.5){
