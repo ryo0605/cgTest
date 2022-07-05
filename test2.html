@@ -94,10 +94,22 @@
         var mat4 = new THREE.MeshPhongMaterial();
         mat4.map = tatami;
 
+        let mat1L = [
+            new THREE.MeshBasicMaterial({map: USAL}),
+            new THREE.MeshBasicMaterial({map: chiL}),
+            new THREE.MeshBasicMaterial({map: fraL}),
+            new THREE.MeshBasicMaterial({map: gerL}),
+            new THREE.MeshBasicMaterial({map: itaL}),
+            new THREE.MeshBasicMaterial({map: UKL})
+        ];
+
+        var i = 1;
+
+
         //floor
         var geometryF = new THREE.PlaneGeometry(25,25,25,25);
         var materialF = new THREE.MeshBasicMaterial({ color: 0xffffff });
-        var floor = new THREE.Mesh(geometryF, mat4);
+        var floor = new THREE.Mesh(geometryF, tatami);
         floor.rotation.set( -Math.PI/2, 0, 0 );
         floor.position.set(0,0,0);
         scene.add(floor);
@@ -119,7 +131,7 @@
         plane3.scale.set(1,0.5);
         scene.add(plane3);
 
-        var plane4 = new THREE.Mesh(geometryF, mat4);
+        var plane4 = new THREE.Mesh(geometryF, tatami);
         plane4.rotation.set( -Math.PI/2, 0, 0 );
         plane4.position.set(0,0,-24);
         scene.add(plane4);
@@ -145,28 +157,28 @@
         var geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
         var material = new THREE.MeshPhongMaterial({ color: 0x0000ff });
         //var box = new THREE.Mesh(geometry, material);
-        var box = new THREE.Mesh(geometry, mat4);
+        var box = new THREE.Mesh(geometry, mat1L);
         box.position.set(0, 0, 0); //位置を指定
         scene.add(box);   // シーンに追加
 
         //襖1
         var box2 = new THREE.Mesh(geometry, mat3);
-        box2.position.set(9, 6, -12.5); //位置を指定
+        box2.position.set(9, 6, -12.5*i); //位置を指定
         box2.scale.set(14, 25)
         scene.add(box2);   // シーンに追加
 
         var box3 = new THREE.Mesh(geometry, mat3);
-        box3.position.set(-9, 6, -12.5); //位置を指定
+        box3.position.set(-9, 6, -12.5*i); //位置を指定
         box3.scale.set(14, 25)
         scene.add(box3);   // シーンに追加
 
         var box4 = new THREE.Mesh(geometry, matL);
-        box4.position.set(-3.5, 6, -12); //位置を指定
+        box4.position.set(-3.5, 6, -12*i); //位置を指定
         box4.scale.set(14, 25)
         scene.add(box4);   // シーンに追加
 
         var box5 = new THREE.Mesh(geometry, matR);
-        box5.position.set(3.5, 6, -12); //位置を指定
+        box5.position.set(3.5, 6, -12*i); //位置を指定
         box5.scale.set(14, 25)
         scene.add(box5);   // シーンに追加
 
@@ -312,56 +324,68 @@
             box.position.z = box4.position.z + 12;
             camera.position.set(0, 1, box4.position.z + 22);
             if(i%7 == 0){
-//              mat3R.map = UKL;
-//              mat3L.map = UKR;
+              mat3L.map = UKL;
+              mat3R.map = UKR;
               matL.map = japanL;
               matR.map = japanR;
               mat2L.map = USAL;
               mat2R.map = USAR;
+
+              mat1L.push = {
+                map: UKL,
+                map: UKL,
+                map: UKL,
+                map: UKL,
+                map: UKL,
+                map: UKL,
+                
+              };
+
+
             }else if(i%7 == 1){
-//              mat3R.map = japanL;
-//              mat3L.map = japanR;
+              mat3L.map = japanL;
+              mat3R.map = japanR;
               matL.map = USAL;
               matR.map = USAR;
               mat2L.map = chiL;
               mat2R.map = chiR;
             }else if(i%7 == 2){
-//              mat3R.map = USAL;
-//              mat3L.map = USAR;
+              mat3L.map = USAL;
+              mat3R.map = USAR;
               matL.map = chiL;
               matR.map = chiR;
               mat2L.map = fraL;
               mat2R.map = fraR;
             }else if(i%7 == 3){
-//              mat3R.map = chiL;
-//              mat3L.map = chiR;
+              mat3L.map = chiL;
+              mat3R.map = chiR;
               matL.map = fraL;
               matR.map = fraR;
               mat2L.map = gerL;
               mat2R.map = gerR;
             }else if(i%7 == 4){
-//              mat3R.map = fraL;
-//              mat3L.map = fraR;
+              mat3L.map = fraL;
+              mat3R.map = fraR;
               matL.map = gerL;
               matR.map = gerR;
               mat2L.map = itaL;
               mat2R.map = itaR;
             }else if(i%7 == 5){
-//              mat3R.map = gerL;
-//              mat3L.map = gerR;
+              mat3L.map = gerL;
+              mat3R.map = gerR;
               matL.map = itaL;
               matR.map = itaR;
               mat2L.map = UKL;
               mat2R.map = UKR;
             }else if(i%7 == 6){
-//              mat3R.map = itaL;
-//              mat3L.map = itaR;
+              mat3L.map = itaL;
+              mat3R.map = itaR;
               matL.map = UKL;
               matR.map = UKR;
               mat2L.map = japanL;
               mat2R.map = japanR;
             }
-            i = 2;
+            i += 1;
           }
 
           // 襖を動かす
