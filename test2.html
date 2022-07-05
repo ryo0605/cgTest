@@ -30,11 +30,11 @@
         // カメラを作成
         const camera = new THREE.PerspectiveCamera(45, width / height);
         // カメラの初期座標を設定
-        camera.position.set(0, 5, 0);
-        camera.lookAt(0,5,-20);
+        camera.position.set(0, 5, 5);
 
         // カメラコントローラーを作成
         const controls = new THREE.OrbitControls(camera, document.body); 
+        camera.lookAt(0, 5, -32);
         
         // 平行光源1
         var directionalLight1 = new THREE.DirectionalLight(0xffffff);
@@ -311,9 +311,9 @@
           camera.position.z -= 0.04;
           //camera.lookAt(box.position);
 
-          if(camera.position.z <= box4.position.z - 12){
+          if(camera.position.z <= box4.position.z - 10){
             camera.position.z = box4.position.z + 12;
-            camera.position.set(0, 3, box4.position.z + 17);
+            camera.position.set(0, 5, box4.position.z + 14);
             if(i%7 == 0){
               mat3R.map = UKL;
               mat3L.map = UKR;
