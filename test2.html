@@ -30,7 +30,7 @@
         // カメラを作成
         const camera = new THREE.PerspectiveCamera(45, width / height);
         // カメラの初期座標を設定
-        camera.position.set(0, 1, 10);
+        camera.position.set(0, 0.1, 5);
         camera.lookAt(0,0,0);
 
         // カメラコントローラーを作成
@@ -319,7 +319,7 @@
 
           if(box.position.z <= box4.position.z - 12){
             box.position.z = box4.position.z + 12;
-            camera.position.set(0, 1, box4.position.z + 22);
+            camera.position.set(0, 0.1, box4.position.z + 17);
             if(i%7 == 0){
               mat3L.map = UKL;
               mat3R.map = UKR;
@@ -386,13 +386,18 @@
           }
 
           // 襖を動かす
-          if(box.position.z <= box4.position.z + 10 && box.position.z >= box4.position.z){
+         // if(box.position.z <= box4.position.z +10 && box.position.z >= box4.position.z && box4.position.x >= -9){
+          //  box4.position.x -=0.02;
+          //}else if(box4.position.x <= -3.5){
+          //  box4.position.x +=0.01;
+          //}
+          if(box.position.z <= box4.position.z + 10 && box.position.z >= box4.position.z && box4.position.x >= -9){
             box4.position.x -= 0.04;
           }else if(box4.position.x <= -3.5){
             box4.position.x += 0.04;
           }
 
-          if(box.position.z <= box5.position.z + 10 && box.position.z >= box5.position.z){
+          if(box.position.z <= box5.position.z + 10 && box.position.z >= box5.position.z && box5.position.x <= 9){
             box5.position.x += 0.04;
           }else if(box5.position.x >= 3.5){
             box5.position.x -= 0.04;
