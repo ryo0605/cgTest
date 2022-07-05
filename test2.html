@@ -268,14 +268,14 @@
         var sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
         sphere.position.set( 0, 0.2, 0 );
         scene.add( sphere );
-        const pointLight = new THREE.PointLight(0xffffff, 0);
+        const pointLight = new THREE.PointLight(0xffffff, 2);
         pointLight.position.set(0, 0, 0);
         scene.add(pointLight);
 
         var sphere2 = new THREE.Mesh( sphereGeometry, sphereMaterial );
         sphere2.position.set( 0, 0.2, 0 );
         scene.add( sphere2 );
-        const pointLight2 = new THREE.PointLight(0xffffff, 2);
+        const pointLight2 = new THREE.PointLight(0xffffff, 0.5);
         pointLight2.position.set(0, 0, 0);
         scene.add(pointLight2);
 
