@@ -313,8 +313,8 @@
           // レンダリング
           renderer.render(scene, camera);
           requestAnimationFrame(update);
-          box.position.z -= 0.02;
-          camera.position.z -=0.02;
+          box.position.z -= 0.04;
+          camera.position.z -= 0.04;
           camera.lookAt(box.position);
 
           if(box.position.z <= box4.position.z - 12){
@@ -386,16 +386,16 @@
           }
 
           // 襖を動かす
-          if(box.position.z <= box4.position.z +10 && box.position.z >= box4.position.z && box4.position.x >= -9){
-            box4.position.x -=0.02;
+          if(box.position.z <= box4.position.z + 10 && box.position.z >= box4.position.z){
+            box4.position.x -= 0.04;
           }else if(box4.position.x <= -3.5){
-            box4.position.x +=0.01;
+            box4.position.x += 0.04;
           }
 
-          if(box.position.z <= box5.position.z +10 && box.position.z >= box5.position.z && box5.position.x <= 9){
-            box5.position.x +=0.02;
-          }else if(box5.position.x >= +3.5){
-            box5.position.x -=0.01;
+          if(box.position.z <= box5.position.z + 10 && box.position.z >= box5.position.z){
+            box5.position.x += 0.04;
+          }else if(box5.position.x >= 3.5){
+            box5.position.x -= 0.04;
           }
 
       }
