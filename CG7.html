@@ -93,10 +93,10 @@
         scene.add( torusKnot );
 
         // テクスチャー読み込み
-        var textureLoader = new THREE.TextureLoader();
-        var texture = textureLoader.load("7img/stone.jpg");
-        var mat = new THREE.MeshPhongMaterial();
-        mat.map = texture;
+        var textureLoader4 = new THREE.TextureLoader();
+        var texture4 = textureLoader4.load("7img/stone.jpg");
+        var mat4 = new THREE.MeshPhongMaterial();
+        mat4.map = texture4;
         // バンプマップ読み込み
         var bump = textureLoader.load("7img/stone-bump.jpg");
         mat4.bumpMap = bump;
@@ -104,7 +104,7 @@
         // 箱を作成
         var geometry1 = new THREE.BoxGeometry(1, 1, 1);
         var box2 = new THREE.Mesh(geometry1, mat4);
-        box2.position.set(1.5,0,-5);
+        box2.position.set(3,3,-3);
         scene.add(box2);
 
 
