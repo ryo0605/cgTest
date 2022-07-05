@@ -30,8 +30,8 @@
         // カメラを作成
         const camera = new THREE.PerspectiveCamera(45, width / height);
         // カメラの初期座標を設定
-        camera.position.set(0, 0.1, 5);
-        camera.lookAt(0,0,0);
+        camera.position.set(0, 5, 0);
+        camera.lookAt(0,5,-20);
 
         // カメラコントローラーを作成
         const controls = new THREE.OrbitControls(camera, document.body); 
@@ -268,14 +268,14 @@
         var sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
         sphere.position.set( 0, 0.2, 0 );
         scene.add( sphere );
-        const pointLight = new THREE.PointLight(0xffffff, 2);
+        const pointLight = new THREE.PointLight(0xffffff, 0.2);
         pointLight.position.set(0, 0, 0);
         scene.add(pointLight);
 
         var sphere2 = new THREE.Mesh( sphereGeometry, sphereMaterial );
         sphere2.position.set( 0, 0.2, 0 );
         scene.add( sphere2 );
-        const pointLight2 = new THREE.PointLight(0xffffff, 0.5);
+        const pointLight2 = new THREE.PointLight(0xffffff, 0.3);
         pointLight2.position.set(0, 0, 0);
         scene.add(pointLight2);
 
@@ -313,7 +313,7 @@
 
           if(camera.position.z <= box4.position.z - 12){
             camera.position.z = box4.position.z + 12;
-            camera.position.set(0, 0.1, box4.position.z + 17);
+            camera.position.set(0, 3, box4.position.z + 17);
             if(i%7 == 0){
               mat3R.map = UKL;
               mat3L.map = UKR;
