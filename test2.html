@@ -94,15 +94,6 @@
         var mat4 = new THREE.MeshPhongMaterial();
         mat4.map = tatami;
 
-        let mat1L = [
-            new THREE.MeshBasicMaterial({map: USAL}),
-            new THREE.MeshBasicMaterial({map: chiL}),
-            new THREE.MeshBasicMaterial({map: fraL}),
-            new THREE.MeshBasicMaterial({map: gerL}),
-            new THREE.MeshBasicMaterial({map: itaL}),
-            new THREE.MeshBasicMaterial({map: UKL})
-        ];
-
         //floor
         var geometryF = new THREE.PlaneGeometry(25,25,25,25);
         var materialF = new THREE.MeshBasicMaterial({ color: 0xffffff });
@@ -154,7 +145,7 @@
         var geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
         var material = new THREE.MeshPhongMaterial({ color: 0x0000ff });
         //var box = new THREE.Mesh(geometry, material);
-        var box = new THREE.Mesh(geometry, mat1L);
+        var box = new THREE.Mesh(geometry, mat3);
         box.position.set(0, 0, 0); //位置を指定
         scene.add(box);   // シーンに追加
 
@@ -321,62 +312,50 @@
             box.position.z = box4.position.z + 12;
             camera.position.set(0, 0.1, box4.position.z + 17);
             if(i%7 == 0){
-              mat3L.map = UKL;
-              mat3R.map = UKR;
+              mat3R.map = UKL;
+              mat3L.map = UKR;
               matL.map = japanL;
               matR.map = japanR;
               mat2L.map = USAL;
               mat2R.map = USAR;
-
-              mat1L.push = {
-                map: UKL,
-                map: UKL,
-                map: UKL,
-                map: UKL,
-                map: UKL,
-                map: UKL,
-                
-              };
-
-
             }else if(i%7 == 1){
-              mat3L.map = japanL;
-              mat3R.map = japanR;
+              mat3R.map = japanL;
+              mat3L.map = japanR;
               matL.map = USAL;
               matR.map = USAR;
               mat2L.map = chiL;
               mat2R.map = chiR;
             }else if(i%7 == 2){
-              mat3L.map = USAL;
-              mat3R.map = USAR;
+              mat3R.map = USAL;
+              mat3L.map = USAR;
               matL.map = chiL;
               matR.map = chiR;
               mat2L.map = fraL;
               mat2R.map = fraR;
             }else if(i%7 == 3){
-              mat3L.map = chiL;
-              mat3R.map = chiR;
+              mat3R.map = chiL;
+              mat3L.map = chiR;
               matL.map = fraL;
               matR.map = fraR;
               mat2L.map = gerL;
               mat2R.map = gerR;
             }else if(i%7 == 4){
-              mat3L.map = fraL;
-              mat3R.map = fraR;
+              mat3R.map = fraL;
+              mat3L.map = fraR;
               matL.map = gerL;
               matR.map = gerR;
               mat2L.map = itaL;
               mat2R.map = itaR;
             }else if(i%7 == 5){
-              mat3L.map = gerL;
-              mat3R.map = gerR;
+              mat3R.map = gerL;
+              mat3L.map = gerR;
               matL.map = itaL;
               matR.map = itaR;
               mat2L.map = UKL;
               mat2R.map = UKR;
             }else if(i%7 == 6){
-              mat3L.map = itaL;
-              mat3R.map = itaR;
+              mat3R.map = itaL;
+              mat3L.map = itaR;
               matL.map = UKL;
               matR.map = UKR;
               mat2L.map = japanL;
