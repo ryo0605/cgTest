@@ -3,10 +3,11 @@
     <meta charset="utf-8" />
     <script src="https://unpkg.com/three@0.137.4/build/three.min.js"></script>
     <script src="https://unpkg.com/three@0.137.4/examples/js/controls/OrbitControls.js"></script>
+    <title>WebGL</title>
   </head>
 <body>
- <h1>背景色を付けた</h1>
- 背景色をつけてみた
+ <h1>レポート</h1>
+ アニメなどで見たことがあるシーンの再現
  <script>
       // ページの読み込みを待つ
       window.addEventListener('DOMContentLoaded', init);
@@ -155,45 +156,45 @@
 
         //襖1
         var box2 = new THREE.Mesh(geometry, mat3);
-        box2.position.set(9, 6, -12.5); //位置を指定
+        box2.position.set(9, 6, -12.5); 
         box2.scale.set(14, 25)
-        scene.add(box2);   // シーンに追加
+        scene.add(box2);
 
         var box3 = new THREE.Mesh(geometry, mat3);
-        box3.position.set(-9, 6, -12.5); //位置を指定
+        box3.position.set(-9, 6, -12.5);
         box3.scale.set(14, 25)
-        scene.add(box3);   // シーンに追加
+        scene.add(box3);
 
         var box4 = new THREE.Mesh(geometry, matL);
-        box4.position.set(-3.5, 6, -12); //位置を指定
+        box4.position.set(-3.5, 6, -12);
         box4.scale.set(14, 25)
-        scene.add(box4);   // シーンに追加
+        scene.add(box4);
 
         var box5 = new THREE.Mesh(geometry, matR);
-        box5.position.set(3.5, 6, -12); //位置を指定
+        box5.position.set(3.5, 6, -12);
         box5.scale.set(14, 25)
-        scene.add(box5);   // シーンに追加
+        scene.add(box5);
 
         //襖２
         var box6 = new THREE.Mesh(geometry, mat3);
-        box6.position.set(9, 6, -36.5); //位置を指定
+        box6.position.set(9, 6, -36.5);
         box6.scale.set(14, 25)
-        scene.add(box6);   // シーンに追加
+        scene.add(box6);
 
         var box7 = new THREE.Mesh(geometry, mat3);
-        box7.position.set(-9, 6, -36.5); //位置を指定
+        box7.position.set(-9, 6, -36.5);
         box7.scale.set(14, 25)
-        scene.add(box7);   // シーンに追加
+        scene.add(box7);
 
         var box8 = new THREE.Mesh(geometry, mat2L);
-        box8.position.set(-3.5, 6, -36); //位置を指定
+        box8.position.set(-3.5, 6, -36);
         box8.scale.set(14, 25)
-        scene.add(box8);   // シーンに追加
+        scene.add(box8);
 
         var box9 = new THREE.Mesh(geometry, mat2R);
-        box9.position.set(3.5, 6, -36); //位置を指定
+        box9.position.set(3.5, 6, -36);
         box9.scale.set(14, 25)
-        scene.add(box9);   // シーンに追加
+        scene.add(box9);
 
         //襖3
         var box10 = new THREE.Mesh(geometry, mat3);
